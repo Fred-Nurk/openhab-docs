@@ -32,8 +32,10 @@ On the very first start, openHAB generates a personal (self-signed, 256-bit ECC)
 This process makes sure that every installation has an individual certificate, so that nobody else can falsely mimic your server.
 Note that on slow hardware, this certificate generation can take up to several minutes, so be patient on a first start - it is all for your own security.
 
-If you wish, you can import your own certificate into this keystore.
+If you wish, you can import your own certificate into this keystore. OpenHAB can support either a self-signed certificate or a certificate issued by a 3rd party CA. 
 Please ensure that you remove the old certificate and give the new certificate the same alias as the old one (otherwise, the App might still be presented the old certificate).
+
+If you intend to use OpenHAB to interact with other systems, such as ZoneMinder, and those systems also use certificates issued by a 3rd party CA, then the CA root certificate must also be imported into the JAVA ca keystore. If this step is not undertaken, then https interaction with the other systems will fail. 
 
 You can also use certificates to authenticate, when using a reverse proxy.
 Have a lok at the [community forum](https://community.openhab.org/t/using-nginx-reverse-proxy-for-client-certificate-authentication-start-discussion/43064) for further information.
